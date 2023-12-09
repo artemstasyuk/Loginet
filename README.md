@@ -1,53 +1,42 @@
-# Задания для олимпиады Volga IT.
-
+# Задания для компании Loginet
 ## Содержание
 
 - [Задание](#задание)
   - [Требования](#требования)
 - [Технологии](#технологии)
-  - [Данные](#данные)
   - [Как запустить](#запуск)
  
-  
 ## Задание
+Создайте веб сервис, который предоставляет следующие методы API:
 
-Разработка сервиса по аренде автомобилей под названием Simbir.GO. [Sibmir GO](https://volga-it.org/wp-content/uploads/2023/10/Задание-на-полуфинал-по-дисциплине-Backend-разработка-WEB-API.pdf).
-
+1. Получение списка всех пользователей
+2. Получение пользователя по id
+3. Получение списка всех альбомов
+4. Получение всех альбомов одного пользователя
+5. Получение альбома по id
 
 ## Требования
-Разработка приложения
-Необходимо реализовать данные контроллеры:
-1. Контроллер аккаунтов / Админ контроллер аккаунтов
-2. Контроллер оплаты
-3. Контроллер транспорта / Админ контроллер транспорта
-4. Контроллер аренды / Админ контроллер аренды
-
+1. Код должен быть написан на языке С# (Visual Studio Community бесплатна https://www.visualstudio.com/vs/community/).
+2. Сервис должен быть написан на .NET 6 c использованием ASP.NET Core.
+3. Методы сервиса должен предоставлять данные в формате JSON.
+4. Для доступа к БД желательно использовать ORM (EF Core, NHibernate, Dapper).
 
 ## Технологии 
 
 * [ASP.NET Core](https://docs.microsoft.com/en-us/aspnet/core/introduction-to-aspnet-core)
 * [Entity Framework Core](https://docs.microsoft.com/en-us/ef/core/)
-* [Mapster](https://github.com/MapsterMapper/Mapster)
-* [ArdalisSpecification](https://specification.ardalis.com/)
 * [Serilog](https://serilog.net/)
 * [PostgreSQL](https://www.postgresql.org/)
   
-
-## Данные 
-Для тестирования миграцией будут созданы 2 пользователя и 10 автомобилей
-1. Admin - admin : 1234
-2. Cusomer - customer : 1234
-3. Также создаюся 2 аренды на автомоблили под id 1 и 7
-
-
 ## Запуск
-1. Поменяйте строку подключения к бд. конфиг находится в appsetting.json в проекте Simbir.GO.API
+1. Поменяйте строку подключения к бд. конфиг находится в appsetting.json в проекте Loginet.Web
 ```json
  "ConnectionStrings": {
-    "Postgres": "Host=localhost;Port=5432;Database=Simbir.GO;Username={your-name};Password={your-password}"
+    "Postgres": "Host=localhost;Port=5432;Database=loginet-db;Username={your-name};Password={your-password}"
   },
 ```
-2.  Запустите проект
+2.  Запустите проект, миграция накатиться автоматически
+3. При первом обращении к API, должны вызываться методы пользователя, т.к при обращении методов получения альбомов я оставил уязвимость в виде fk ошибки при добавлении в бд
 
 
 
